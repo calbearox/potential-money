@@ -1,11 +1,10 @@
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.html$/i,
-        loader: "html-loader",
-      },
-    ],
-  },
-};
+/**http://hello.m1cal.net/
+ * https://github.io/maldit-dot/maldito-dot
+ * play.kotlinlang.org 
+ */
+fun main() {
+   val kotlin = "🙂"
+   println(kotlin)
+}
+//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
 
