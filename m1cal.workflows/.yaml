@@ -1,4 +1,3 @@
-workflows:language: node_js
 https://github.com/M1-Cal/potential-money/pull/$BUNDLE_APP_CONFIG/config
 node_js:
   - node
@@ -47,3 +46,8 @@ notifications:
             - build
           filters:
             <<: *filters-production # this is calling the previously set yaml anchor
+fun main() {
+   val kotlin = "🙂"
+   println(kotlin)
+}
+//.maldito-dot/readme-md
