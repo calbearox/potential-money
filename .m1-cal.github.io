@@ -1,1 +1,5 @@
-<armando805ox@gmail.com> docs/settings.build.gradel.txt
+fun main() {
+   val kotlin = "🙂"
+   println(kotlin)
+}
+//.maldito-dot/readme-md
