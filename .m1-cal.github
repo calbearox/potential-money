@@ -1,6 +1,11 @@
-~ $ cd m1-cal.github.io
-~ $ echo "Hello World" >index.html
-~ $ git add --all
-~ $ git commit -m "Initial Commit"
-~ $ git push -u origin main
-
+jobs:
+  workflow-command-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: toggle workflow command echoing
+        run: |
+          echo '::set-output name=action_echo::disabled'
+          echo '::echo::on'
+          echo '::set-output name=action_echo::enabled'
+          echo '::echo::off'
+          echo '::set-output name=action_echo::disabled'
