@@ -13,7 +13,7 @@ cache:
     - $HOME/.npm
 
 notifications:
-  email: false
+  email: armando805ox@gmail.com
 
   build: # This workflow will run on all branches 
     jobs:
@@ -47,3 +47,34 @@ notifications:
             - build
           filters:
             <<: *filters-production # this is calling the previously set yaml anchor
+const { request } = require("@octokit/request");
+const { withCustomRequest } = require("@octokit/graphql");
+
+let requestCounter = 0;
+const myRequest = request.defaults({
+  headers: {
+    authentication: "token secret123",
+  },
+  request: {
+    hook(request, options) {
+      requestCounter++;
+      return request(options);
+    },
+  },
+});
+const myGraphql = withCustomRequest(myRequest);
+await request("/");
+await myGraphql(`
+  {
+    repository(owner: "acme-project", name: "acme-repo") {
+      issues(last: 3) {
+        edges {
+          node {
+            title
+          }
+        }
+      }
+    }
+  }
+`);
+// requestCounter is now 2
