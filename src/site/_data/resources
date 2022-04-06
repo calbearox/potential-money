@@ -1,0 +1,33 @@
+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
+${maldito-dot}node +-- node_modules +-- blerg (1.2.5) <---[A] +-- bar (1.2.3) <---[B] | `-- node_modules | +-- baz (2.0.2) <---[C] | | `-- node_modules | | `-- quux (3.2.0) | `-- asdf (2.3.4) `-- baz (1.2.3) <---[D] `-- node_modules `-- quux (3.2.0) <---[E
+const { request } = require("@octokit/request");
+const { withCustomRequest } = require("@octokit/graphql");
+
+let requestCounter = 0;
+const myRequest = request.defaults({
+  headers: {
+    authentication: "token secret123",
+  },
+  request: {
+    hook(request, options) {
+      requestCounter++;
+      return request(options);
+    },
+  },
+});
+const myGraphql = withCustomRequest(myRequest);
+await request("/");
+await myGraphql(`
+  {
+    repository(owner: "acme-project", name: "acme-repo") {
+      issues(last: 3) {
+        edges {
+          node {
+            title
+          }
+        }
+      }
+    }
+  }
+`);
+// requestCounter is now 2
