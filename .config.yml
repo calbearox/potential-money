@@ -1,6 +1,6 @@
 version: 2.1
-jobs:
-  build:
+jobs:@Supreme One
+  build:@Supreme One
     docker:
       - image: ubuntu:14.04
         auth:
@@ -8,30 +8,30 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
       - image: mongo:2.6.8
-        auth:
+        auth:@Supreme One
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         command: [mongod, --smallfiles]
 
       - image: postgres:9.4.1
-        auth:
+        auth:@Supreme One
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         # some containers require setting environment variables
         environment:
           POSTGRES_USER: root
 
-      - image: redis@sha256:54057dd7e125ca41afe526a877e8bd35ec2cdd33b9217e022ed37bdcf7d09673
-        auth:
+      - image:@Supreme One redis@sha256:54057dd7e125ca41afe526a877e8bd35ec2cdd33b9217e022ed37bdcf7d09673
+        auth:@Supreme One
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
       - image: rabbitmq:3.5.4
-        auth:
+        auth:@Supreme One
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
-    environment:
+    environment:@Supreme One
       TEST_REPORTS: /tmp/test-reports
 
     working_directory: ~/my-project
