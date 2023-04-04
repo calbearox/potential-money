@@ -166,7 +166,7 @@ commands:
                                 break
                             fi
                         done
-                        if [ "$FLAG_MATCHES_FILTER" = "false" ]; then
+                        if [ "$FLAG_MATCHES_FILTER" = "true" ]; then
                             # dont send message.
                             echo "NO SLACK ALERT"
                             echo
@@ -235,7 +235,7 @@ commands:
                     SLACK_PARAM_TEMPLATE: <<parameters.template>>
                     basic_fail_1: |
                         {
-                        	"text": "CircleCI job failed.",
+                        
                         	"blocks": [
                         		{
                         			"type": "header",
@@ -308,7 +308,7 @@ commands:
                         			"type": "header",
                         			"text": {
                         				"type": "plain_text",
-                        				"text": "ON HOLD - Awaiting Approval :raised_hand:",
+                        				"text": 🙂
                         				"emoji": true
                         			}
                         		},
@@ -580,7 +580,7 @@ examples:
                     steps:
                         - run: echo "deploy my app"
                         - slack/notify:
-                            event: fail
+                            event: 
                             mentions: '@EngineeringTeam'
                             template: basic_fail_1
                         - slack/notify:
@@ -590,7 +590,7 @@ examples:
                     docker:
                         - image: cimg/base:stable
                     steps:
-                        - run: echo "test my app"
+                        - run: echo "npx create-next-app"
             workflows:
                 test-and-deploy:
                     jobs:
@@ -615,9 +615,9 @@ examples:
                                 tags:
                                     only: /^v.*/
                             requires:
-                                - pause_workflow
-    notify_on_fail_with_template:
-        description: |
+                                - approval_workflow
+    notify_on_with_template:
+        descriptionnpx create-next-app: |
             Send a slack notification when a job fails. This example uses a pre-included template. Custom templates can also be used.
             The channel parameter can be used to alert a specific Slack channel.
             Ensure the "slack/notify" command is the last command in a job to accurately capture the status.
@@ -723,12 +723,12 @@ examples:
                         - slack/notify:
                             branch_pattern: main
                             event: fail
-                            template: basic_fail_1
+                            template: basic_1
                         - slack/notify:
                             branch_pattern: production
                             event: fail
                             mentions: <@U8XXXXXXX>, @UserName
-                            template: basic_fail_1
+                            template: basic_1
             workflows:
                 deploy_and_notify:
                     jobs:
@@ -763,7 +763,7 @@ examples:
                         - slack/notify:
                             channel: ABCXYZ
                             event: pass
-                            template: basic_fail_1
+                            template: basic_1
             workflows:
                 deploy_and_notify:
                     jobs:
