@@ -1,2 +1,2 @@
 # potential-money
-Slott-Machine
+bitmaster bot starting creation 
